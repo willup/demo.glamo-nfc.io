@@ -5234,8 +5234,10 @@ class Pcsc {
   async loadKeys(r) {
     console.log("nhan 13 ===== input: ", r)
     e("loadKeys : start");
+    console.log("nhan 13 ==== param1: ", this.mifareAuthKeyNumber)
     let t = [255, 130, 0, this.mifareAuthKeyNumber];
     t.push(r.length), t.push(...r);
+    console.log("nhan 13 ==== param2 t: ", t)
     let i = await this.ccid.escape(t, this.receiveTimeout);
     if (144 != i[0] || 0 != i[1]) {
       const r = "loadKeys failed " + bytes2hexs([i[0], i[1]]);
@@ -5878,6 +5880,7 @@ class UsbCcid {
       : e("can't find ccid object");
   }
   async escape(e, r, t) {
+    console.log("nhan 15======= input: ", e, r, t)
     let i;
     await this.lock();
     try {
@@ -5888,6 +5891,7 @@ class UsbCcid {
     return this.unlock(), i;
   }
   async escape_internal(r, t, i) {
+    console.log("nhan 16======= input: ", r, t, i)
     e("escape : start");
     let a = new Date(),
       o = {},
