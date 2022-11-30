@@ -5897,17 +5897,21 @@ class UsbCcid {
       o = {},
       s = NFCPort400.SLOT_BUSY_RETRY_COUNT + 1;
     for (null != i && (s = i + 1); s > 0; ) {
-      console.log("nhan 16======= input for: ", i, s)
+      console.log("nhan 16======= input for 1: ", s)
       const i = this.getSequenceNumber(),
         n = this.add_PC_to_RDR_Escape(r, i);
+        console.log("nhan 16======= input for 2: ", i, n)
       try {
+        console.log("nhan 16======= input for 3: ", this.communicator)
         await this.communicator.transmit(n);
       } catch (r) {
+        console.log("nhan 16======= input for 4: ", r)
         return e("escape send error catch"), Promise.reject(r);
       }
       await this.communicator.clear();
       try {
         let r = NFCPort400.SEQUENCE_ERROR_RETRY_COUNT + 1;
+        console.log("nhan 16======= input for 5: ", r)
         for (; r > 0; ) {
           const n = 10,
             _ = await this.communicator.receive(n, t),
