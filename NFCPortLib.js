@@ -3645,6 +3645,7 @@ class NFCPort100 extends ReaderWriterBase {
     (this.targetCardBaudRate = T), e("typea_iso14443_4_activate end");
   }
   async typea_mifareAuth(r) {
+    console.log("nhan 12 ===== input: ", r)
     e("typea_mifareAuth begin");
     let t, i, a, o;
     await this.InSetProtocol([8, 1]),
@@ -5231,6 +5232,7 @@ class Pcsc {
     return e("getData : OK"), e("getData : end"), a.slice(0, a.length - 2);
   }
   async loadKeys(r) {
+    console.log("nhan 13 ===== input: ", r)
     e("loadKeys : start");
     let t = [255, 130, 0, this.mifareAuthKeyNumber];
     t.push(r.length), t.push(...r);
@@ -5252,6 +5254,7 @@ class Pcsc {
     e("loadKeys success"), e("loadKeys : end");
   }
   async generateAutheticate(r, t) {
+    console.log("nhan 14 ===== input: ", r, t)
     let i;
     e("generateAutheticate : start"),
       "KeyA" == t ? (i = 96) : "KeyB" == t && (i = 97);
