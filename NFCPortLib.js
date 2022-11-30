@@ -5237,7 +5237,7 @@ class Pcsc {
     console.log("nhan 13 ==== param1: ", this.mifareAuthKeyNumber)
     let t = [255, 130, 0, this.mifareAuthKeyNumber];
     t.push(r.length), t.push(...r);
-    console.log("nhan 13 ==== param2 t: ", t)
+    console.log("nhan 13 ==== param2 t: ", t, this.receiveTimeout)
     let i = await this.ccid.escape(t, this.receiveTimeout);
     if (144 != i[0] || 0 != i[1]) {
       const r = "loadKeys failed " + bytes2hexs([i[0], i[1]]);
@@ -5897,6 +5897,7 @@ class UsbCcid {
       o = {},
       s = NFCPort400.SLOT_BUSY_RETRY_COUNT + 1;
     for (null != i && (s = i + 1); s > 0; ) {
+      console.log("nhan 16======= input for: ", i, s)
       const i = this.getSequenceNumber(),
         n = this.add_PC_to_RDR_Escape(r, i);
       try {
