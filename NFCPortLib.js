@@ -877,6 +877,7 @@ class ReaderWriterBase {
   }
 
   async communicateThru(t, i, a) {
+    console.log("nhan 1===== communicateThru input : ", t, i, a)
     let o, s;
     if ((e("communicateThru begin"), this.bAbnormalState))
       return (
@@ -1645,6 +1646,7 @@ class NFCPort100 extends ReaderWriterBase {
     return e("detectCard end"), i;
   }
   async communicateThru(r, t, i) {
+    console.log("nhan 2===== communicateThru input : ", r, t, i)
     e("communicateThru begin");
     let a = await super.communicateThru(r, t, i);
     return e("communicateThru end"), a;
@@ -6221,6 +6223,7 @@ class NFCPortLib {
     return (o = !1), e("detectCard end"), a;
   }
   async communicateThru(r, t, i) {
+    console.log("nhan 3===== communicateThru input : ", r, t, i)
     let a, s;
     if ((e("communicateThru begin"), o))
       return (
