@@ -466,6 +466,7 @@ class GenericUSB extends class CommunicationBase {
     );
   }
   async receive(r, t) {
+    console.log("nhan 19======== receive input: ", r, t)
     let i, a, o, s, n, _, c, E, N;
     return (
       e("receive begin (req_len=" + r + ", timeout=" + t + ")"),
