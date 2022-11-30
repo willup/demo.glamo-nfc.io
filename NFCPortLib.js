@@ -5918,8 +5918,12 @@ class UsbCcid {
             c = this.check_RDR_to_PC_Escape(_, i),
             E = c.dwLength;
             console.log("nhan 16======= input for 6: ", n, _, c, E)
-          if (i == c.bSeq) r = 0;
+          if (i == c.bSeq) {
+            console.log("nhan 16======= input for 7: ", i)
+            r = 0;
+          }
           else if (0 == --r) {
+            console.log("nhan 16======= input for 8: ", --r)
             const r = "escape receive error no correct header";
             throw (
               (e(r),
@@ -5932,6 +5936,7 @@ class UsbCcid {
             );
           }
           let N = new Date().getTime() - a.getTime();
+          console.log("nhan 16======= input for 9: ", N, t)
           if (N > t) {
             const r = "escape receive Timeout";
             throw (
@@ -5946,9 +5951,12 @@ class UsbCcid {
           }
           (t -= N), E > 0 && (o = await this.communicator.receive(E, t));
           const l = 1;
+          console.log("nhan 16======= input for 10: ", c.bmCommandStatus)
           if (c.bmCommandStatus == l) {
+            console.log("nhan 16======= input for 11: ")
             const r = 224;
             if (c.bError != r) {
+              console.log("nhan 16======= input for 12: ")
               const r = "bmCommandStatus failed. bError:" + c.bError;
               throw (
                 (e(r),
@@ -5961,6 +5969,7 @@ class UsbCcid {
               );
             }
             if (0 == --s) {
+              console.log("nhan 16======= input for 13: ")
               const r = "bmCommandStatus failed. Slot Busy";
               throw (
                 (e(r),
@@ -5973,10 +5982,12 @@ class UsbCcid {
               );
             }
             {
+              console.log("nhan 16======= input for 14: ")
               const e = Math.floor(40 * Math.random()) - 20;
               await wait_async(NFCPort400.SLOT_BUSY_WAIT_TIME + e);
             }
           } else {
+            console.log("nhan 16======= input for 15: ")
             if (E < 2) {
               const r = "escape receive error no enough abData";
               throw (
@@ -5993,6 +6004,7 @@ class UsbCcid {
           }
         }
       } catch (r) {
+        console.log("nhan 16======= input for 16: ", r)
         return (
           e("escape receive error catch"),
           await this.communicator.clear(),
