@@ -5917,6 +5917,7 @@ class UsbCcid {
             _ = await this.communicator.receive(n, t),
             c = this.check_RDR_to_PC_Escape(_, i),
             E = c.dwLength;
+            console.log("nhan 16======= input for 6: ", n, _, c, E)
           if (i == c.bSeq) r = 0;
           else if (0 == --r) {
             const r = "escape receive error no correct header";
