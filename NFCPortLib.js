@@ -893,7 +893,8 @@ class ReaderWriterBase {
         null == a ||
         !a.mifareAuthentication) &&
       (null == t || t.length <= 0)
-    )
+    ){
+      console.log("nhan 6======")
       return (
         (o = "Invalid parameter (command)"),
         e(o),
@@ -901,10 +902,13 @@ class ReaderWriterBase {
           new NFCPortError(NFCPortError.INVALID_PARAMETER, o, r, 228)
         )
       );
+    }
+    
     if (
       null != t &&
       t.length > ReaderWriterBase.COMMUNICATE_THRU_COMMAND_LENGTH_MAX
-    )
+    ) {
+      console.log("nhan 7======")
       return (
         (o = "The command is incorrect size."),
         e(o),
@@ -912,12 +916,16 @@ class ReaderWriterBase {
           new NFCPortError(NFCPortError.INVALID_PARAMETER, o, r, 232)
         )
       );
+    }
+      
     if (
       this.protocol == ReaderWriterBase.PROTOCOL_ISO14443_3A &&
       null != a &&
       a.mifareAuthentication
     ) {
       if (null == a.key || 6 != a.key.length)
+      {
+        console.log("nhan 8======")
         return (
           (o = "Invalid key length"),
           e(o),
@@ -925,7 +933,11 @@ class ReaderWriterBase {
             new NFCPortError(NFCPortError.INVALID_PARAMETER, o, r, 243)
           )
         );
+      }
+        
       if ("KeyA" != a.keyType && "KeyB" != a.keyType)
+      {
+        console.log("nhan 9======")
         return (
           (o = "Invalid keyType"),
           e(o),
@@ -933,7 +945,10 @@ class ReaderWriterBase {
             new NFCPortError(NFCPortError.INVALID_PARAMETER, o, r, 247)
           )
         );
-      if (a.blockNumber < 0 || a.blockNumber > 255)
+      }
+        
+      if (a.blockNumber < 0 || a.blockNumber > 255) {
+        console.log("nhan 10======")
         return (
           (o = "Invalid blockNumber"),
           e(o),
@@ -941,7 +956,10 @@ class ReaderWriterBase {
             new NFCPortError(NFCPortError.INVALID_PARAMETER, o, r, 251)
           )
         );
-      if (null == a.uid || 0 == a.uid.length)
+      }
+        
+      if (null == a.uid || 0 == a.uid.length) {
+        console.log("nhan 11======")
         return (
           (o = "Invalid uid"),
           e(o),
@@ -949,6 +967,8 @@ class ReaderWriterBase {
             new NFCPortError(NFCPortError.INVALID_PARAMETER, o, r, 255)
           )
         );
+      }
+        
       await this.typea_mifareAuth(a);
     }
     return (
