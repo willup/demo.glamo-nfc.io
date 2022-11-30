@@ -923,7 +923,7 @@ class ReaderWriterBase {
       null != a &&
       a.mifareAuthentication
     ) {
-      if (null == a.key || 6 != a.key.length)
+      if (null == a.key || 16 != a.key.length)
       {
         console.log("nhan 8======")
         return (
