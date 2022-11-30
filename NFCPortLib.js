@@ -5953,10 +5953,10 @@ class UsbCcid {
               ))
             );
           }
-          console.log("nhan 16======= input for 9->10: ", E, t, N)
+          console.log("nhan 16======= input for 9->10: ", E, t, N);
           (t -= N), E > 0 && (o = await this.communicator.receive(E, t));
           const l = 1;
-          console.log("nhan 16======= input for 10: ", c.bmCommandStatus)
+          console.log("nhan 16======= input for 10: ", c.bmCommandStatus);
           if (c.bmCommandStatus == l) {
             console.log("nhan 16======= input for 11: ")
             const r = 224;
