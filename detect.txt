@@ -1,0 +1,6 @@
+1. communicateThru_internal
+2. super.communicateThru
+3. this.typea_mifareAuth
+4. this.pcsc.generateAutheticate
+5. this.ccid.escape
+6. this.escape_internal
