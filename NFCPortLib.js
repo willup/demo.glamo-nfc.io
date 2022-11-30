@@ -5917,10 +5917,14 @@ class UsbCcid {
         let r = NFCPort400.SEQUENCE_ERROR_RETRY_COUNT + 1;
         console.log("nhan 16======= input for 5: ", r)
         for (; r > 0; ) {
+          console.log("nhan 16======= input for 5-->6 1: ", t)
           const n = 10,
             _ = await this.communicator.receive(n, t),
             c = this.check_RDR_to_PC_Escape(_, i),
             E = c.dwLength;
+            console.log("nhan 16======= input for 5-->6 2: ", _)
+            console.log("nhan 16======= input for 5-->6 3: ", c)
+            console.log("nhan 16======= input for 5-->6 3: ", E)
             console.log("nhan 16======= input for 6: ", n, _, c, E)
           if (i == c.bSeq) {
             console.log("nhan 16======= input for 7: ", i)
