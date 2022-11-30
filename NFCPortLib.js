@@ -5885,8 +5885,10 @@ class UsbCcid {
     await this.lock();
     try {
       i = await this.escape_internal(e, r, t);
+      console.log("nhan 15======= okay : ", i)
     } catch (e) {
       i = Promise.reject(e);
+      console.log("nhan 15======= reject : ", i)
     }
     return this.unlock(), i;
   }
@@ -5987,7 +5989,7 @@ class UsbCcid {
               await wait_async(NFCPort400.SLOT_BUSY_WAIT_TIME + e);
             }
           } else {
-            console.log("nhan 16======= input for 15: ")
+            console.log("nhan 16======= input for 15: ", E)
             if (E < 2) {
               const r = "escape receive error no enough abData";
               throw (
@@ -6037,6 +6039,7 @@ class UsbCcid {
     );
   }
   check_RDR_to_PC_Escape(r, t) {
+    console.log("nhan 17======check_RDR_to_PC_Escape: ", r, t)
     if (r.length < 10) {
       throw (
         (e("size failed."),
@@ -6081,6 +6084,7 @@ class UsbCcid {
     if (s != t) {
       e("bSeq failed.");
     }
+    console.log("nhan 17======check_RDR_to_PC_Escape 1: ", n)
     return {
       dwLength: a,
       bSeq: s,
@@ -6092,8 +6096,10 @@ class UsbCcid {
     return (e[3] << 24) | (e[2] << 16) | (e[1] << 8) | e[0];
   }
   getSlotStatusRegister(r) {
+    console.log("nhan 18======getSlotStatusRegister input: ", r)
     const t = 3 & r,
       i = (r >> 6) & 3;
+      console.log("nhan 18======getSlotStatusRegister 1: ", i)
     switch (i) {
       case 0:
         e("Slot Status: Processed without error");
