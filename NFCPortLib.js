@@ -5237,8 +5237,9 @@ class Pcsc {
     console.log("nhan 13 ==== param1: ", this.mifareAuthKeyNumber)
     let t = [255, 130, 0, this.mifareAuthKeyNumber];
     t.push(r.length), t.push(...r);
-    console.log("nhan 13 ==== param2 t: ", t, this.receiveTimeout)
+    console.log("nhan 13 ==== param2 : ", t, this.receiveTimeout)
     let i = await this.ccid.escape(t, this.receiveTimeout);
+    console.log("nhan 13 ==== param3 : ", i)
     if (144 != i[0] || 0 != i[1]) {
       const r = "loadKeys failed " + bytes2hexs([i[0], i[1]]);
       return (
