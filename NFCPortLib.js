@@ -568,7 +568,6 @@ class GenericUSB extends class CommunicationBase {
                   )
                 ))
               : ((t = (function dataview_to_array(e) {
-
                 console.log("nhan20 ===== dataview_to_array input:",i, e)
                   let r, t;
                   for (
@@ -5248,7 +5247,8 @@ class Pcsc {
     console.log("nhan 13 ==== param2 : ", t, this.receiveTimeout)
     let i = await this.ccid.escape(t, this.receiveTimeout);
     console.log("nhan 13 ==== param3 : ", i)
-    if (144 != i[0] || 0 != i[1]) {
+    //|| 137 != i[1]
+    if (144 != i[0] || 0 != i[1] || 137 != i[1]) {
       const r = "loadKeys failed " + bytes2hexs([i[0], i[1]]);
       return (
         e(r),
