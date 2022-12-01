@@ -5248,7 +5248,7 @@ class Pcsc {
     let i = await this.ccid.escape(t, this.receiveTimeout);
     console.log("nhan 13 ==== param3 : ", i)
     //|| 137 != i[1]
-    if (144 != i[0] || 0 != i[1] || 137 != i[1]) {
+    if (144 != i[0] || (0 != i[1] && 137 != i[1])) {
       const r = "loadKeys failed " + bytes2hexs([i[0], i[1]]);
       return (
         e(r),
