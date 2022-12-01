@@ -565,7 +565,7 @@ class GenericUSB extends class CommunicationBase {
                   )
                 ))
               : ((t = (function dataview_to_array(e) {
-                console.log("nhan20 ===== dataview_to_array input:", r)
+                console.log("nhan20 ===== dataview_to_array input:", e)
                   let r, t;
                   for (
                     r = new Array(e.byteLength), t = 0;
