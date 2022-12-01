@@ -4898,7 +4898,7 @@ class Pcsc {
             );
           }
           if (0 != R[r + 1] || 144 != R[r + 2] || 0 != R[r + 3]) {
-            console.log("nhan34========")
+            console.log("nhan34========",R, r )
             const t =
               "transparentExchange error: " +
               bytes2hexs([R[r + 1], R[r + 2], R[r + 3]]);
