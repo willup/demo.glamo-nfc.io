@@ -5283,7 +5283,7 @@ class Pcsc {
     ];
     const o = await this.ccid.escape(a, this.receiveTimeout);
     console.log("nhan 14 ===== escape: ", o)
-    if (144 != o[0] || 0 != o[1]) {
+    if (i.length > 2 && (144 != i[0] || 0 != i[1] )) {
       const r = "generateAutheticate failed " + bytes2hexs([o[0], o[1]]);
       return (
         e(r),
