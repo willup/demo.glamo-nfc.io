@@ -1163,6 +1163,7 @@ class ReaderWriterBase {
         ReaderWriterBase.FELICA_DETECT_TIMEOUT
       );
     } catch (e) {
+      console.log("nhan23======== ")
       return (
         e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
           ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -1789,6 +1790,7 @@ class NFCPort100 extends ReaderWriterBase {
           ReaderWriterBase.FELICA_DETECT_TIMEOUT
         );
       } catch (e) {
+        console.log("nhan24======== ")
         return (
           e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
             ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -3207,7 +3209,8 @@ class NFCPort100 extends ReaderWriterBase {
                   )
                 )
               );
-            if (0 != array_get_uint32l(r, 2))
+            if (0 != array_get_uint32l(r, 2)) {
+              console.log("nhan25======== ")
               return (
                 (s = array_get_uint32l(r, 2)),
                 s == NFCPort100.COM_STATUS_TEMPERATURE_ERROR ||
@@ -3224,6 +3227,8 @@ class NFCPort100 extends ReaderWriterBase {
                 (_.communicationStatus = s),
                 Promise.reject(_)
               );
+            }
+              
             if (6 == r.length)
               return (
                 (i = "Illegal response length"),
@@ -3426,6 +3431,7 @@ class NFCPort100 extends ReaderWriterBase {
     try {
       a = await this.InCommRF(r, i);
     } catch (e) {
+      console.log("nhan26=======")
       return (
         e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
           ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -3466,6 +3472,7 @@ class NFCPort100 extends ReaderWriterBase {
       try {
         c = await this.InCommRF(_, a);
       } catch (e) {
+        console.log("nhan27========")
         return (
           e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
             ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -3492,6 +3499,7 @@ class NFCPort100 extends ReaderWriterBase {
       try {
         l = await this.InCommRF(N, a);
       } catch (e) {
+        console.log("nhan28========")
         return (
           e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
             ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -3535,6 +3543,7 @@ class NFCPort100 extends ReaderWriterBase {
     try {
       n = await this.InCommRF(o, s);
     } catch (e) {
+      console.log("nhan29========")
       return (
         e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
           ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -3593,6 +3602,7 @@ class NFCPort100 extends ReaderWriterBase {
       try {
         u = await this.InCommRF(C, s);
       } catch (e) {
+        console.log("nhan30========")
         return (
           e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
             ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -3703,6 +3713,7 @@ class NFCPort100 extends ReaderWriterBase {
     try {
       n = await this.InCommRF(o, s);
     } catch (e) {
+      console.log("nhan31========")
       return (
         e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
           ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -3770,6 +3781,7 @@ class NFCPort100 extends ReaderWriterBase {
     try {
       u = await this.InCommRF(P, R);
     } catch (e) {
+      console.log("nhan32========")
       return (
         e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
           ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -4125,6 +4137,7 @@ class NFCPort400 extends ReaderWriterBase {
     try {
       i = await super.detectCard(r, t);
     } catch (e) {
+      console.log("nhan33========")
       return (
         e.errorType == NFCPortError.THRU_RESPONSE_PACKET_NOT_RECEIVED &&
           ((e.errorType = NFCPortError.CARD_NOT_DETECTED),
@@ -4885,6 +4898,7 @@ class Pcsc {
             );
           }
           if (0 != R[r + 1] || 144 != R[r + 2] || 0 != R[r + 3]) {
+            console.log("nhan34========")
             const t =
               "transparentExchange error: " +
               bytes2hexs([R[r + 1], R[r + 2], R[r + 3]]);
@@ -5093,6 +5107,7 @@ class Pcsc {
             );
           }
           if (0 != c[r + 1] || 144 != c[r + 2] || 0 != c[r + 3]) {
+            console.log("nhan35========")
             const t =
               "switchProtocol error: " +
               bytes2hexs([c[r + 1], c[r + 2], c[r + 3]]);
