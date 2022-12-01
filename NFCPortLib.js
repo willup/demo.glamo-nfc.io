@@ -886,8 +886,8 @@ class ReaderWriterBase {
   async communicateThru(t, i, a) {
     console.log("nhan 1===== communicateThru input : ", t, i, a)
     console.log("nhan 4==== parameter: ", this.protocol, a, t)
-    console.log("nhan 5===== checking parameter: ", this.protocol != ReaderWriterBase.PROTOCOL_ISO14443_3A, null == a, !a.mifareAuthentication,
-    null == t,  )
+    // console.log("nhan 5===== checking parameter: ", this.protocol != ReaderWriterBase.PROTOCOL_ISO14443_3A, null == a, !a.mifareAuthentication,
+    // null == t,  )
     let o, s;
     if ((e("communicateThru begin"), this.bAbnormalState))
       return (
