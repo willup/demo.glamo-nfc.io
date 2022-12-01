@@ -247,11 +247,12 @@ class GenericUSB extends class CommunicationBase {
     } else e("open end (Already opened)");
   }
   async getPairedDevice(r, t) {
-    console.log("nhan21======= getPairedDevice")
+    console.log("nhan21======= getPairedDevice input: ", r, t)
     let i,
       a = null;
     try {
       i = await navigator.usb.getDevices();
+      console.log("nhan21 === getDevices: ", i)
     } catch (r) {
       return (
         e(r.message),
