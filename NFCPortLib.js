@@ -195,6 +195,7 @@ class GenericUSB extends class CommunicationBase {
           i.forEach((r) => {
             e.push({ vendorId: t, productId: r });
           }),
+          console.log("nhan22 ===== open", e),
             (this.device = await navigator.usb.requestDevice({ filters: e }));
         } catch (r) {
           return (
@@ -246,6 +247,7 @@ class GenericUSB extends class CommunicationBase {
     } else e("open end (Already opened)");
   }
   async getPairedDevice(r, t) {
+    console.log("nhan21======= getPairedDevice")
     let i,
       a = null;
     try {
