@@ -546,7 +546,7 @@ class GenericUSB extends class CommunicationBase {
             )
           )
         );
-      console.log("nhan20==== transferIn input: ", this.endno_in, this.receive_buffer_size)
+      console.log("nhan20==== transferIn input: ", this.endno_in, this.receive_buffer_size, e)
       this.receiver = this.device
         .transferIn(this.endno_in, this.receive_buffer_size)
         .then(
