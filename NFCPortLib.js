@@ -975,7 +975,7 @@ class ReaderWriterBase {
           )
         );
       }
-        
+      console.log("nhan start ===========")
       await this.typea_mifareAuth(a);
     }
     return (
