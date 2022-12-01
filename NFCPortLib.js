@@ -4897,7 +4897,7 @@ class Pcsc {
               )
             );
           }
-          if (0 != R[r + 1] || 144 != R[r + 2] || 0 != R[r + 3]) {
+          if ((0 != R[r + 1] && 2 != R[r + 1]) || (144 != R[r + 2] && 100 != R[r + 2] ) || (0 != R[r + 3] && 1 != R[r + 3])) { // nhan update
             console.log("nhan34========",R, r )
             const t =
               "transparentExchange error: " +
