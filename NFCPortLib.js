@@ -465,15 +465,15 @@ class GenericUSB extends class CommunicationBase {
       t
     );
   }
+  //this function need update
   async receive(r, t) {
     console.log("nhan 19======== receive input: ", r, t)
     let i, a, o, s, n, _, c, E, N;
     return (
       e("receive begin (req_len=" + r + ", timeout=" + t + ")"),
       (i = new Date()),
-      0 != r && this.recv_buffer.length >= r
-        ? ((a = this.get_buffer(r)), e("receive end(1)"), Promise.resolve(a))
-        : ((o = !1),
+      0 != r && this.recv_buffer.length >= r ? ((a = this.get_buffer(r)), e("receive end(1)"), Promise.resolve(a)) : 
+      ((o = !1),
           (a = this.transferin().then(
             () =>
               o
@@ -571,6 +571,7 @@ class GenericUSB extends class CommunicationBase {
                     t++
                   )
                     r[t] = e.getUint8(t);
+                    console.log("nhan20 ===== dataview_to_array:", r)
                   return r;
                 })(i.data)),
                 e("transferIn data : " + array_tohexs(t)),
@@ -5924,7 +5925,7 @@ class UsbCcid {
             E = c.dwLength;
             console.log("nhan 16======= input for 5-->6 2: ", _)
             console.log("nhan 16======= input for 5-->6 3: ", c)
-            console.log("nhan 16======= input for 5-->6 3: ", E)
+            console.log("nhan 16======= input for 5-->6 4: ", E)
             console.log("nhan 16======= input for 6: ", n, _, c, E)
           if (i == c.bSeq) {
             console.log("nhan 16======= input for 7: ", i)
