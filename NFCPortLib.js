@@ -886,7 +886,7 @@ class ReaderWriterBase {
   async communicateThru(t, i, a) {
     console.log("nhan 1===== communicateThru input : ", t, i, a)
     console.log("nhan 4==== parameter: ", this.protocol, a, t)
-    if(!a){
+    if(i==100){
       console.log("Nhan======= Read Binary")
     }
     // console.log("nhan 5===== checking parameter: ", this.protocol != ReaderWriterBase.PROTOCOL_ISO14443_3A, null == a, !a.mifareAuthentication,
