@@ -7218,7 +7218,9 @@ class NFCPortLib {
       
     try {
       console.log("NHAN======== 5: ", r, t, i)
+      console.log("NHAN======== 5->1: ", this._rw)
       a = await this._rw.communicateThru(r, t, i);
+      console.log("NHAN======== 6: ", a)
     } catch (e) {
       return (
         this._rw.bAbnormalState && (this._status = "S4"), Promise.reject(e)
