@@ -6322,7 +6322,9 @@ class NFCPortLib {
     try {
       
       a = await this.communicateThru_internal(r, t, i);
-      console.log("nhan 3====== response: ", a)
+      if(t == 100){
+        console.log("nhan 3====== response: ", a)
+      }
     } catch (e) {
       console.log("nhan 3====== error: ", e)
       return (o = !1), Promise.reject(e);
