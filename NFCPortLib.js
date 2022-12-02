@@ -6970,8 +6970,10 @@ class NFCPortLib {
     );
   }
   async communicateThru_internal(r, t, i) {
+    console.log("NHAN======== communicateThru_internal input:", r, t, i)
     let a, o;
     if ((e("communicateThru_internal begin"), null != r)) {
+      console.log("NHAN======== 1")
       if ("object" != typeof r || "Uint8Array" != r.constructor.name)
         return (
           (o = "The command is incorrect type."),
@@ -7025,7 +7027,8 @@ class NFCPortLib {
           )
         );
       t < 400 && (t = 400);
-    } else if (null == i)
+    } else if (null == i){
+      console.log("NHAN======== 2")
       return (
         (o = "The command is not specified"),
         e(o),
@@ -7038,7 +7041,9 @@ class NFCPortLib {
           )
         )
       );
+    }
     if (null != i) {
+      console.log("NHAN======== 3")
       if ("object" != typeof i)
         return (
           (o = "The option is incorrect type."),
@@ -7195,7 +7200,8 @@ class NFCPortLib {
           )
         );
     }
-    if ("S2" != this._status)
+    if ("S2" != this._status) {
+      console.log("NHAN======== 4")
       return (
         (o = "Can not callout Library Status (Status=" + this._status + ")"),
         e(o),
@@ -7208,7 +7214,10 @@ class NFCPortLib {
           )
         )
       );
+    }
+      
     try {
+      console.log("NHAN======== 5: ", r, t, i)
       a = await this._rw.communicateThru(r, t, i);
     } catch (e) {
       return (
