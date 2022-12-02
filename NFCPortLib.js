@@ -973,7 +973,7 @@ class ReaderWriterBase {
           )
         );
       }
-      
+
       await this.typea_mifareAuth(a);
     }
     return (
@@ -6322,8 +6322,11 @@ class NFCPortLib {
       );
     o = !0;
     try {
+      
       a = await this.communicateThru_internal(r, t, i);
+      console.log("nhan 3====== response: ", a)
     } catch (e) {
+      console.log("nhan 3====== error: ", e)
       return (o = !1), Promise.reject(e);
     }
     return (o = !1), e("communicateThru end"), a;
