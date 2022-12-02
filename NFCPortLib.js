@@ -4149,7 +4149,9 @@ class NFCPort400 extends ReaderWriterBase {
     );
   }
   async communicateThru(r, t, i) {
+    console.log("NHAN=====AAAAA input:", r, t,i)
     e("communicateThru begin");
+    console.log("NHAN=====AAAAA communicateThru:", super.communicateThru )
     let a = await super.communicateThru(r, t, i);
     return e("communicateThru end"), a;
   }
