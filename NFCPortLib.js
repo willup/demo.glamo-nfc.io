@@ -1875,11 +1875,13 @@ class NFCPort100 extends ReaderWriterBase {
       )
     );
   }
-  async sendThruCommand(e, r, t) {
+  async sendThruCommand(e, r, t) { 
+    console.log("NHAN======== sendThruCommand:",e,r,t)
     let i;
     if ((await this.setCommunicateThruProtocol(t), null != e && e.length > 0)) {
       r < ReaderWriterBase.COMMUNICATE_THRU_MIN_TIMEOUT &&
         (r = ReaderWriterBase.COMMUNICATE_THRU_MIN_TIMEOUT);
+        console.log("NHAN======== sendThruCommand:",this.InCommRF)
       let t = await this.InCommRF(e, r);
       i = new Uint8Array(t);
     } else i = null;
@@ -3145,6 +3147,7 @@ class NFCPort100 extends ReaderWriterBase {
     );
   }
   async InCommRF(r, t) {
+    console.log("NHAN======== InCommRF input: ",r,t)
     let i, a, o, s, n, _, c;
     return (
       e("InCommRF begin"),
