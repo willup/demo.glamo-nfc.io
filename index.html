@@ -187,7 +187,7 @@
 
 			/* communicateThru(Read Binary) */
 			//let read_binary = new Uint8Array([0x30, blockNumber]);
-			let read_binary = new Uint8Array([0x30, 0x01, 0x00, 0x02]);
+			let read_binary = new Uint8Array([0x30, 0x01, 0x00, 0x02, blockNumber]);
 			
 			let response = await lib.communicateThru(read_binary, 100)
 			.then(ret => {
