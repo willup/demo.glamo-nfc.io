@@ -100,16 +100,12 @@
 			/* communicateThru(Read Block) */
 			//let felica_read_without_encryption = new Uint8Array([16, 0x06, 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, 1, 0x09,0x10, 1, 0x80,0x01]);
 			let felica_read_without_encryption = new Uint8Array([0x06, 0x00, 0x00, 0x03, 0x01, 0x00]);
-			console.log(felica_read_without_encryption)
-			//let felica_read_without_encryption = new Uint8Array([0x06, 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, 1, 0x09,0x10, 1, 0x80,0x01]);
-			//let felica_read_without_encryption = new Uint8Array([16, 0x06, 0x00,0x00,0x03,0x01,0x00,0x00,0x00,0x00, 1, 0x09,0x10, 1, 0x80,0x01]);
 			//_array_copy(felica_read_without_encryption, 2, card.idm, 0, card.idm.length);
 			let response = await lib.communicateThru(felica_read_without_encryption, 100, detectOption)
 			.then(ret => {
-				console.log(byteArrayToHexString(felica_read_without_encryption));
 				communicateTitle.innerText = 'Reading...';
-				communicateMessage.innerText = 'Send    : ' + byteArrayToHexString(felica_read_without_encryption)/*_array_tohexs(felica_read_without_encryption)*/ +
-											   '\nReceive : ' + byteArrayToHexString(ret)/*_array_tohexs(ret)*/;
+				communicateMessage.innerText = 'Send    : ' + _array_tohexs(felica_read_without_encryption) +
+											   '\nReceive : ' + _array_tohexs(ret);
 				return ret;
 			}, (error) => {
 				communicateTitle.innerText = 'Read error';
@@ -189,7 +185,7 @@
 
 			/* communicateThru(Read Binary) */
 			//let read_binary = new Uint8Array([0x30, blockNumber]);
-			let read_binary = new Uint8Array([0x30, 0x01, 0x00, 0x02, blockNumber]);
+			let read_binary = new Uint8Array([0x70, 0x00, 0x40, 0x00]);
 			
 			let response = await lib.communicateThru(read_binary, 100)
 			.then(ret => {
