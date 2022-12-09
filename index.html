@@ -99,15 +99,15 @@
 
 			/* communicateThru(Read Block) */
 			//let felica_read_without_encryption = new Uint8Array([16, 0x06, 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, 1, 0x09,0x10, 1, 0x80,0x01]);
-			let felica_read_without_encryption = new Uint8Array([0x06, 0x00, 0x00, 0x03, 0x01, 0x00]);
+			//let felica_read_without_encryption = new Uint8Array([0x06, 0x00, 0x00, 0x03, 0x01, 0x00]);
 			//let felica_read_without_encryption = new Uint8Array([0x06, 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, 1, 0x09,0x10, 1, 0x80,0x01]);
-			//let felica_read_without_encryption = new Uint8Array([16, 0x06, 0x00,0x00,0x03,0x01,0x00,0x00,0x00,0x00, 1, 0x09,0x10, 1, 0x80,0x01]);
+			let felica_read_without_encryption = new Uint8Array([16, 0x06, 0x00,0x00,0x03,0x01,0x00,0x00,0x00,0x00, 1, 0x09,0x10, 1, 0x80,0x01]);
 			_array_copy(felica_read_without_encryption, 2, card.idm, 0, card.idm.length);
 			let response = await lib.communicateThru(felica_read_without_encryption, 100, detectOption)
 			.then(ret => {
 				communicateTitle.innerText = 'Reading...';
-				communicateMessage.innerText = 'Send    : ' + _array_tohexs(felica_read_without_encryption) +
-											   '\nReceive : ' + _array_tohexs(ret);
+				communicateMessage.innerText = 'Send    : ' + byteArrayToHexString(felica_read_without_encryption)/*_array_tohexs(felica_read_without_encryption)*/ +
+											   '\nReceive : ' + byteArrayToHexString(ret)/*_array_tohexs(ret)*/;
 				return ret;
 			}, (error) => {
 				communicateTitle.innerText = 'Read error';
@@ -256,6 +256,19 @@
 		temp = _array_slice(array, offset, length );
 		return _bytes2hexs(temp, '');
 	}
+
+	function byteArrayToHexString(byteArray) {
+    var hexString = '';
+    var nextHexByte;
+    for (var i=0; i<byteArray.byteLength; i++) {
+        nextHexByte = byteArray[i].toString(16);    // Integer to base 16
+        if (nextHexByte.length < 2) {
+            nextHexByte = "0" + nextHexByte;        // Otherwise 10 becomes just a instead of 0a
+        }//  w w w.java  2 s  . c  om
+        hexString += nextHexByte;
+    }
+    return hexString;
+}
 
 	function _array_copy(dest, dest_offset, src, src_offset, length)
 	{
