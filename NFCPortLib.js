@@ -4839,12 +4839,15 @@ class Pcsc {
     return n;
   }
   async transparentExchange(r, t, i, a, o, s, n, _, c) {
+    console.log("=====nhan==== transparentExchange input:",r, t, i, a, o, s, n, _, c);
     let E = [];
     if (null != a || null != o || null != s || null != n || null != _) {
+      console.log("=====nhan==== transparentExchange 1");
       const e = this.getTransmissionAndReceptionFlag(a, o, s, n, _);
       E.push(144, 2, (e >> 8) & 255, 255 & e);
     }
     if (null != c) {
+      console.log("=====nhan==== transparentExchange 2");
       let e = 0;
       c < 8 && (e = c), E.push(145, 1, e);
     }
@@ -4862,9 +4865,11 @@ class Pcsc {
         )),
       null != t)
     ) {
+      console.log("=====nhan==== transparentExchange 3");
       const e = 130;
       E.push(r, e, (t.length >> 8) & 255, 255 & t.length), E.push(...t);
     }
+    console.log("=====nhan==== transparentExchange 4");
     let N = [255, 80, 0, 1];
     N.push(0, (E.length >> 8) & 255, 255 & E.length),
       N.push(...E),
@@ -4873,6 +4878,7 @@ class Pcsc {
       P = await this.ccid.escape(N, this.receiveTimeout),
       C = P.slice(P.length - 2);
     if (144 != C[0] || 0 != C[1]) {
+      console.log("=====nhan==== transparentExchange 5");
       const r = "transparentExchange error: " + bytes2hexs([C[0], C[1]]);
       return (
         e(r),
@@ -4887,10 +4893,12 @@ class Pcsc {
       );
     }
     e("transparentExchange : OK");
+    console.log("=====nhan==== transparentExchange 6");
     let R = P.slice(0, P.length - 2);
     for (let r = 0; r < R.length - 1; r++) {
       let t,
         i = R[r];
+      console.log("=====nhan==== transparentExchange 6 1: ", i);
       switch (i) {
         case 192:
           if (((t = R[++r]), !(3 == t && r + t < R.length))) {
