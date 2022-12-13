@@ -4874,6 +4874,7 @@ class Pcsc {
     N.push(0, (E.length >> 8) & 255, 255 & E.length),
       N.push(...E),
       N.push(0, 0, 0);
+      console.log("=====nhan==== transparentExchange 4 0: ", N);
     let l,
       P = await this.ccid.escape(N, this.receiveTimeout),
       C = P.slice(P.length - 2);
