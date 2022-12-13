@@ -4323,8 +4323,7 @@ class NFCPort400 extends ReaderWriterBase {
       e("typea_mifareAuth end");
   }
   async sendThruCommand(r, t, i) {
-    console.log("====Nhan===== sendThruCommand input: ", r, t, i)
-    console.log("====Nhan===== sendThruCommand")
+    console.log("====Nhan===== sendThruCommand input: ", r, t, i);
     let a,
       o = {
         appendCrc: null,
@@ -4697,6 +4696,7 @@ class Pcsc {
   }
   async transceive(r, t, i, a, o, s, n, _) {
     e("transceive : start");
+    console.log("====Nhan===== transceive input: ",r, t, i, a, o, s, n, _);
     let c = await this.transparentExchange(
       Pcsc.TRANSCEIVE_TAG,
       r,
@@ -4708,6 +4708,7 @@ class Pcsc {
       n,
       _
     );
+    console.log("====Nhan===== transceive 1: ",c);
     return e("transceive : end"), c;
   }
   async turnOnTheRF() {
