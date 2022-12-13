@@ -4323,6 +4323,7 @@ class NFCPort400 extends ReaderWriterBase {
       e("typea_mifareAuth end");
   }
   async sendThruCommand(r, t, i) {
+    console.log("====Nhan===== sendThruCommand: ", r, t, i)
     console.log("====Nhan===== sendThruCommand")
     let a,
       o = {
@@ -4351,6 +4352,7 @@ class NFCPort400 extends ReaderWriterBase {
           null != i.expectParity && (o.expectParity = i.expectParity)),
         null != i.txNumberOfValidBits))
     ) {
+      console.log("====Nhan===== sendThruCommand 1")
       if (!(1 <= i.txNumberOfValidBits && i.txNumberOfValidBits <= 8)) {
         const r = "Invalid TX number of valid bits";
         return (
@@ -4368,6 +4370,7 @@ class NFCPort400 extends ReaderWriterBase {
       s = i.txNumberOfValidBits;
     }
     if (null != r && r.length > 0) {
+      console.log("====Nhan===== sendThruCommand 2")
       t < ReaderWriterBase.COMMUNICATE_THRU_MIN_TIMEOUT &&
         (t = ReaderWriterBase.COMMUNICATE_THRU_MIN_TIMEOUT);
       let e = await this.pcsc.transceive(

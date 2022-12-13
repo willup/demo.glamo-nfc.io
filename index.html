@@ -174,20 +174,20 @@
 			//let blockNumber = 8;
 			let blockNumber = 16;
 			let communicationOption = new CommunicationOption(true, key, keyType, blockNumber, card.uid);
-			await lib.communicateThru(null, 0, communicationOption)
+			/*await lib.communicateThru(null, 0, communicationOption)
 			.then(ret => {
 				communicateTitle.innerText = 'Reading...\nAuthentication : Success';
 				return ret;
 			}, (error) => {
 				communicateTitle.innerText = 'Reading...\nAuthentication : Failed';
 				throw(error);
-			});
+			});*/
 
 			/* communicateThru(Read Binary) */
 			//let read_binary = new Uint8Array([0x30, blockNumber]);
 			let read_binary = new Uint8Array([0x70, 0x00, 0x40, 0x00]);
 			
-			let response = await lib.communicateThru(read_binary, 100, communicationOption)
+			let response = await lib.communicateThru(read_binary, 100)
 			.then(ret => {
 				communicateMessage.innerText = 'Send    : ' + _array_tohexs(read_binary) +
 											   '\nReceive : ' + _array_tohexs(ret);
