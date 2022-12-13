@@ -155,7 +155,8 @@
 			console.log('deviceName : ' + lib.deviceName);
 
 			/* detectCard(TypeA Card) */
-			let card = await lib.detectCard('iso14443-3A')
+			let detectOption = new DetectionOption(new Uint8Array([0xff, 0xff]), 0, true, false, null);
+			let card = await lib.detectCard('iso14443-3A', detectOption)
 			.then(ret => {
 				detectTitle.innerText = 'Card is detected';
 				console.log('UID : ' + _array_tohexs(ret.uid) +
@@ -187,7 +188,7 @@
 			//let read_binary = new Uint8Array([0x30, blockNumber]);
 			let read_binary = new Uint8Array([0x70, 0x00, 0x40, 0x00]);
 			
-			let response = await lib.communicateThru(read_binary, 100)
+			let response = await lib.communicateThru(read_binary, 100, detectOption)
 			.then(ret => {
 				communicateMessage.innerText = 'Send    : ' + _array_tohexs(read_binary) +
 											   '\nReceive : ' + _array_tohexs(ret);

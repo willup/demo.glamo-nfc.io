@@ -882,7 +882,7 @@ class ReaderWriterBase {
   }
 
   async communicateThru(t, i, a) {
-    console.log("nhan 1===== communicateThru input : ", t, i, a)
+    console.log("nhan 1===== communicateThru input:  ", t, i, a)
     console.log("nhan 4==== parameter: ", this.protocol, a, t)
     let o, s;
     if ((e("communicateThru begin"), this.bAbnormalState))
@@ -971,7 +971,7 @@ class ReaderWriterBase {
           )
         );
       }
-
+      console.log("Nhan start========")
       await this.typea_mifareAuth(a);
     }
     return (
@@ -4156,6 +4156,7 @@ class NFCPort400 extends ReaderWriterBase {
     e("communicateThru begin");
     console.log("NHAN=====AAAAA communicateThru:", super.communicateThru )
     let a = await super.communicateThru(r, t, i);
+    console.log("NHAN=====AAAAA response: ", a);
     return e("communicateThru end"), a;
   }
   async switchRF(r) {
@@ -6308,7 +6309,7 @@ class NFCPortLib {
     return (o = !1), e("detectCard end"), a;
   }
   async communicateThru(r, t, i) {
-    console.log("nhan 3===== communicateThru input : ", r, t, i)
+    console.log("nhan 3===== communicateThru input: ", r, t, i)
     let a, s;
     if ((e("communicateThru begin"), o))
       return (
