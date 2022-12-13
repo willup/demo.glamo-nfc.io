@@ -4323,7 +4323,7 @@ class NFCPort400 extends ReaderWriterBase {
       e("typea_mifareAuth end");
   }
   async sendThruCommand(r, t, i) {
-    console.log("====Nhan===== sendThruCommand: ", r, t, i)
+    console.log("====Nhan===== sendThruCommand input: ", r, t, i)
     console.log("====Nhan===== sendThruCommand")
     let a,
       o = {
@@ -4373,6 +4373,7 @@ class NFCPort400 extends ReaderWriterBase {
       console.log("====Nhan===== sendThruCommand 2")
       t < ReaderWriterBase.COMMUNICATE_THRU_MIN_TIMEOUT &&
         (t = ReaderWriterBase.COMMUNICATE_THRU_MIN_TIMEOUT);
+      console.log("====Nhan===== sendThruCommand 2.1: ",r, t, o, s)
       let e = await this.pcsc.transceive(
         r,
         t,
@@ -4383,6 +4384,7 @@ class NFCPort400 extends ReaderWriterBase {
         o.appendProtocolPrologue,
         s
       );
+      console.log("====Nhan===== sendThruCommand 2: ",e)
       (a = new Uint8Array(e)),
         null != i &&
           ((null == i.appendCrc &&
@@ -4392,6 +4394,7 @@ class NFCPort400 extends ReaderWriterBase {
             (this._modifiedTransmissionAndReceptionFlag = !0),
           null != i.txNumberOfValidBits &&
             (this._modifiedTransmissionBitFraming = !0));
+            console.log("====Nhan===== sendThruCommand 3: ",a)
     } else a = null;
     return a;
   }
