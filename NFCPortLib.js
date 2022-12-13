@@ -4323,6 +4323,7 @@ class NFCPort400 extends ReaderWriterBase {
       e("typea_mifareAuth end");
   }
   async sendThruCommand(r, t, i) {
+    console.log("====Nhan===== sendThruCommand")
     let a,
       o = {
         appendCrc: null,
