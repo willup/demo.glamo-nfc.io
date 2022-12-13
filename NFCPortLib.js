@@ -4877,6 +4877,8 @@ class Pcsc {
     let l,
       P = await this.ccid.escape(N, this.receiveTimeout),
       C = P.slice(P.length - 2);
+      console.log("=====nhan==== transparentExchange 4 1: ", this.ccid);
+      console.log("=====nhan==== transparentExchange 4 2: ", P);
     if (144 != C[0] || 0 != C[1]) {
       console.log("=====nhan==== transparentExchange 5");
       const r = "transparentExchange error: " + bytes2hexs([C[0], C[1]]);
