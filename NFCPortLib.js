@@ -4893,8 +4893,8 @@ class Pcsc {
       );
     }
     e("transparentExchange : OK");
-    console.log("=====nhan==== transparentExchange 6");
     let R = P.slice(0, P.length - 2);
+    console.log("=====nhan==== transparentExchange 6 ", R);
     for (let r = 0; r < R.length - 1; r++) {
       let t,
         i = R[r];
@@ -4902,6 +4902,7 @@ class Pcsc {
       switch (i) {
         case 192:
           if (((t = R[++r]), !(3 == t && r + t < R.length))) {
+            console.log("=====nhan==== transparentExchange 6 2 ");
             const r = "transparentExchange error.";
             return (
               e(r),
@@ -4916,6 +4917,7 @@ class Pcsc {
             );
           }
           if ((0 != R[r + 1] && 2 != R[r + 1]) || (144 != R[r + 2] && 100 != R[r + 2] ) || (0 != R[r + 3] && 1 != R[r + 3])) { // nhan update
+            console.log("=====nhan==== transparentExchange 6 3 ");
             console.log("nhan34========",R, r )
             const t =
               "transparentExchange error: " +
@@ -4968,7 +4970,9 @@ class Pcsc {
                   )
             );
           }
+          console.log("=====nhan==== transparentExchange 6 4:", t, r);
           r += t;
+          console.log("=====nhan==== transparentExchange 6 5:", r);
           break;
         case 146:
           if (((t = R[++r]), !(1 == t && r + t < R.length))) {
@@ -5067,6 +5071,7 @@ class Pcsc {
           (r = R.length), e("transparentExchange unexpected TAG " + i);
       }
     }
+    console.log("=====nhan==== transparentExchange response:", l);
     return l;
   }
   getTransmissionAndReceptionFlag(r, t, i, a, o) {
