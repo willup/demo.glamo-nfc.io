@@ -4865,7 +4865,7 @@ class Pcsc {
         )),
       null != t)
     ) {
-      console.log("=====nhan==== transparentExchange 3");
+      console.log("=====nhan==== transparentExchange 3", r,e,t);
       const e = 130;
       E.push(r, e, (t.length >> 8) & 255, 255 & t.length), E.push(...t);
     }
