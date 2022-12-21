@@ -187,15 +187,15 @@
 			//let read_binary = new Uint8Array([0x30, blockNumber]);
 			let read_binary = new Uint8Array([0x70, 0x00, 0x40, 0x00]);
 			
-			let response = await lib.communicateThru(read_binary, 100)
-			.then(ret => {
-				communicateMessage.innerText = 'Send    : ' + _array_tohexs(read_binary) +
-											   '\nReceive : ' + _array_tohexs(ret);
-				return ret;
-			}, (error) => {
-				communicateTitle.innerText = 'Read error';
-				throw(error);
-			});
+			// let response = await lib.communicateThru(read_binary, 100)
+			// .then(ret => {
+			// 	communicateMessage.innerText = 'Send    : ' + _array_tohexs(read_binary) +
+			// 								   '\nReceive : ' + _array_tohexs(ret);
+			// 	return ret;
+			// }, (error) => {
+			// 	communicateTitle.innerText = 'Read error';
+			// 	throw(error);
+			// });
 
 			/* close() */
 			await lib.close();
