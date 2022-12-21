@@ -174,14 +174,14 @@
 			//let blockNumber = 8;
 			let blockNumber = 16;
 			let communicationOption = new CommunicationOption(true, key, keyType, blockNumber, card.uid);
-			/*await lib.communicateThru(null, 0, communicationOption)
+			await lib.communicateThru(null, 0, communicationOption)
 			.then(ret => {
 				communicateTitle.innerText = 'Reading...\nAuthentication : Success';
 				return ret;
 			}, (error) => {
 				communicateTitle.innerText = 'Reading...\nAuthentication : Failed';
 				throw(error);
-			});*/
+			});
 
 			/* communicateThru(Read Binary) */
 			//let read_binary = new Uint8Array([0x30, blockNumber]);
